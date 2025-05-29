@@ -46,7 +46,7 @@ pub fn[T] Array::from_iter(iter : Iter[T]) -> Array[T] {
 /// let u = [1, 2, 3]
 /// let v = [4, 5, 6]
 /// u.push_iter(v.iter())
-/// assert_eq!(u, [1, 2, 3, 4, 5, 6])
+/// assert_eq(u, [1, 2, 3, 4, 5, 6])
 /// ```
 pub fn[T] push_iter(self : Array[T], iter : Iter[T]) -> Unit {
   for x in iter {
@@ -301,28 +301,6 @@ pub impl[X : @quickcheck.Arbitrary] @quickcheck.Arbitrary for Array[X] with arbi
 }
 
 ///|
-pub fn join(self : Array[String], separator : String) -> String {
-  match self {
-    [] => ""
-    [hd, .. tl] => {
-      let mut size_hint = hd.length()
-      for s in tl {
-        size_hint += s.length() + separator.length()
-      }
-      size_hint = size_hint << 1
-      let buf = StringBuilder::new(size_hint~)
-      buf.write_string(hd)
-      if separator == "" {
-        for s in tl {
-          buf.write_string(s)
-        }
-      } else {
-        for s in tl {
-          buf.write_string(separator)
-          buf.write_string(s)
-        }
-      }
-      buf.to_string()
-    }
-  }
+pub fn join(self : Array[String], separator : @string.View) -> String {
+  self[:].join(separator)
 }
