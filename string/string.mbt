@@ -340,7 +340,7 @@ fn String::offset_of_nth_char_forward(
   // 1. We couldn't reach the requested character offset
   // 2. The resulting offset is beyond the end of the string
   // This handles the empty string case correctly.
-  if char_count < n || utf16_offset >= end_offset {
+  if char_count < n {
     None
   } else {
     Some(utf16_offset)
@@ -369,7 +369,7 @@ fn String::offset_of_nth_char_backward(
     }
     char_count = char_count + 1
   }
-  if char_count < n || utf16_offset < start_offset {
+  if char_count < n {
     None
   } else {
     Some(utf16_offset)

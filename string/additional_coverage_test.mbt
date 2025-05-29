@@ -48,7 +48,9 @@ test "String::offset_of_nth_char_forward with special case" {
   let result = s.offset_of_nth_char(4) // Last character
   inspect(result, content="Some(4)")
   let result2 = s.offset_of_nth_char(5) // Beyond last character
-  inspect(result2, content="None")
+  inspect(result2, content="Some(5)")
+  let result3 = s.offset_of_nth_char(6) // Even further
+  inspect(result3, content="None") // Should return None as it's out of bounds
 }
 
 ///|

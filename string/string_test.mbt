@@ -627,7 +627,8 @@ test "offset_of_nth_char" {
   inspect(s.offset_of_nth_char(2), content="Some(3)")
   inspect(s.offset_of_nth_char(3), content="Some(4)")
   inspect(s.offset_of_nth_char(4), content="Some(6)")
-  inspect(s.offset_of_nth_char(5), content="None")
+  inspect(s.offset_of_nth_char(5), content="Some(7)")
+  inspect(s.offset_of_nth_char(6), content="None")
   inspect(s.offset_of_nth_char(-1), content="Some(6)")
   inspect(s.offset_of_nth_char(-2), content="Some(4)")
   inspect(s.offset_of_nth_char(-3), content="Some(3)")
@@ -651,7 +652,7 @@ test "offset_of_nth_char range" {
     s.offset_of_nth_char(2, start_offset=1, end_offset=6),
     content="Some(4)",
   )
-  inspect(s.offset_of_nth_char(3, start_offset=1, end_offset=6), content="None")
+  inspect(s.offset_of_nth_char(3, start_offset=1, end_offset=6), content="Some(6)")
   inspect(s.offset_of_nth_char(4, start_offset=1, end_offset=6), content="None")
   inspect(
     s.offset_of_nth_char(-1, start_offset=1, end_offset=6),
