@@ -39,7 +39,7 @@ fn[T] FixedArray::any(Self[T], (T) -> Bool?Error) -> Bool?Error
 fn FixedArray::blit_from_bytesview(Self[Byte], Int, @bytes.View) -> Unit
 fn[T : Eq] FixedArray::contains(Self[T], T) -> Bool
 fn[T] FixedArray::copy(Self[T]) -> Self[T]
-fn[T] FixedArray::each(Self[T], (T) -> Unit) -> Unit
+fn[T] FixedArray::each(Self[T], (T) -> Unit?Error) -> Unit?Error
 fn[T] FixedArray::eachi(Self[T], (Int, T) -> Unit?Error) -> Unit?Error
 fn[T : Eq] FixedArray::ends_with(Self[T], Self[T]) -> Bool
 fn[A, B] FixedArray::fold(Self[A], init~ : B, (B, A) -> B?Error) -> B?Error
@@ -49,7 +49,7 @@ fn[T] FixedArray::from_iter(Iter[T]) -> Self[T]
 fn[T : Compare] FixedArray::is_sorted(Self[T]) -> Bool
 fn FixedArray::join(Self[String], @string.StringView) -> String
 fn[A] FixedArray::last(Self[A]) -> A?
-fn[T] FixedArray::makei(Int, (Int) -> T) -> Self[T]
+fn[T] FixedArray::makei(Int, (Int) -> T?Error) -> Self[T]?Error
 fn[T, U] FixedArray::map(Self[T], (T) -> U?Error) -> Self[U]?Error
 fn[T, U] FixedArray::mapi(Self[T], (Int, T) -> U?Error) -> Self[U]?Error
 fn[T] FixedArray::rev(Self[T]) -> Self[T]
@@ -76,7 +76,7 @@ fn[A, B] Array::filter_map(Self[A], (A) -> B??Error) -> Self[B]?Error
 fn[T] Array::from_iter(Iter[T]) -> Self[T]
 fn Array::join(Self[String], @string.StringView) -> String
 fn[A] Array::last(Self[A]) -> A?
-fn[T] Array::makei(Int, (Int) -> T) -> Self[T]
+fn[T] Array::makei(Int, (Int) -> T?Error) -> Self[T]?Error
 fn[T] Array::push_iter(Self[T], Iter[T]) -> Unit
 fn[T] Array::shuffle(Self[T], rand~ : (Int) -> Int) -> Self[T]
 fn[T] Array::shuffle_in_place(Self[T], rand~ : (Int) -> Int) -> Unit
